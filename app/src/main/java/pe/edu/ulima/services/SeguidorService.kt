@@ -1,8 +1,7 @@
 package pe.edu.ulima.services
 
-import pe.edu.ulima.models.Imagen
-import pe.edu.ulima.models.Seguidor
-import pe.edu.ulima.models.Usuario
+import pe.edu.ulima.models.beans.Seguidor
+import pe.edu.ulima.models.beans.Usuario
 
 class SeguidorService {
     companion object {

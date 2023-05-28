@@ -1,6 +1,6 @@
 package pe.edu.ulima.services
 
-import pe.edu.ulima.models.Seguido
+import pe.edu.ulima.models.beans.Seguido
 
 class SeguidoService {
     companion object {

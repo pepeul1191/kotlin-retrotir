@@ -17,17 +17,15 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat.finishAffinity
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberImagePainter
-import pe.edu.ulima.models.Imagen
-import pe.edu.ulima.models.Pokemon
+import pe.edu.ulima.models.beans.Imagen
+import pe.edu.ulima.models.beans.Pokemon
 import pe.edu.ulima.ui.app.viewmodels.PokemonViewModel
 import pe.edu.ulima.ui.theme.Orange200
 import pe.edu.ulima.ui.theme.TopBar
@@ -63,8 +61,8 @@ public fun PokemonScreen(
     }
     val seguidores: Int by viewModel.seguidores.observeAsState(0)
     val seguidos: Int by viewModel.seguidos.observeAsState(0)
-    //viewModel.setPokemons()
-    viewModel.setImagenes(userId)
+    viewModel.setPokemons("", activity)
+    //viewModel.setImagenes(userId)
     viewModel.setSeguidores(userId)
     viewModel.setSeguidos(userId)
     var isBottomSheetOpen by rememberSaveable { mutableStateOf(false) }
@@ -116,7 +114,6 @@ public fun PokemonScreen(
                 modifier = Modifier.fillMaxSize(),
                 columns = GridCells.Fixed(5),
                 content = {
-                    /*
                     items(viewModel.pokemons!!.size) { i ->
                         val pokemon: Pokemon = viewModel.pokemons!![i]
                         Image(
@@ -130,7 +127,8 @@ public fun PokemonScreen(
                                     navController.navigate("/pokemon/detalle?pokemon_id=${pokemon.id.toString()}")
                                 },
                         )
-                    }*/
+                    }
+                    /*
                     items(viewModel.imagenes!!.size) { i ->
                         val imagen: Imagen = viewModel.imagenes!![i]
                         Image(
@@ -145,6 +143,7 @@ public fun PokemonScreen(
                                 },
                         )
                     }
+                     */
                 }
             )
         }

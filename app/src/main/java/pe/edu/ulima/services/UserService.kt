@@ -1,6 +1,6 @@
 package pe.edu.ulima.services
 
-import pe.edu.ulima.models.Usuario
+import pe.edu.ulima.models.beans.Usuario
 
 class UserService {
     companion object {
@@ -27,7 +27,7 @@ class UserService {
             return id
         }
 
-        fun fetchOne(id: Int): Usuario{
+        fun fetchOne(id: Int): Usuario {
             var usuario = Usuario()
             for(u in usuarios){
                 if(u.id == id){

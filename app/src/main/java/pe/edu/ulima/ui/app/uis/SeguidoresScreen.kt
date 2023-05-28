@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberImagePainter
-import pe.edu.ulima.models.Usuario
+import pe.edu.ulima.models.beans.Usuario
 import pe.edu.ulima.ui.app.viewmodels.SeguidorViewModel
 
 @Preview

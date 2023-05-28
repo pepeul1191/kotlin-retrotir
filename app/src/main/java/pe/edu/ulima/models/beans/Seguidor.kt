@@ -1,4 +1,4 @@
-package pe.edu.ulima.models
+package pe.edu.ulima.models.beans
 
 data class Seguidor(
     var id: Int = 0,

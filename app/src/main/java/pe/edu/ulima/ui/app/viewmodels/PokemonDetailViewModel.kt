@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import pe.edu.ulima.models.Pokemon
+import pe.edu.ulima.models.beans.Pokemon
 import pe.edu.ulima.services.PokemonService
 
 class PokemonDetailViewModel: ViewModel() {
@@ -46,6 +46,7 @@ class PokemonDetailViewModel: ViewModel() {
     }
 
     fun getPokemon(id: Int){
+        /*
         val pokemonsList: List<Pokemon> = PokemonService.fetchAll()
         for(pokemon in pokemonsList){
             if(pokemon.id == id){
@@ -56,6 +57,7 @@ class PokemonDetailViewModel: ViewModel() {
                 this.updateName(pokemon.nombre)
             }
         }
+         */
     }
 
     fun unsetPokemon(){

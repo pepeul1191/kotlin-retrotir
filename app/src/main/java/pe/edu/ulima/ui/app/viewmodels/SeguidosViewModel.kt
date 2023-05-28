@@ -4,11 +4,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import pe.edu.ulima.models.Pokemon
-import pe.edu.ulima.models.Usuario
-import pe.edu.ulima.services.PokemonService
+import pe.edu.ulima.models.beans.Usuario
 import pe.edu.ulima.services.SeguidorService
-import pe.edu.ulima.services.UserService
 
 class SeguidosViewModel: ViewModel() {
     private val _id = MutableLiveData<Int>(0)

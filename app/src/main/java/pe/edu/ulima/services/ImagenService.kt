@@ -1,6 +1,6 @@
 package pe.edu.ulima.services
 
-import pe.edu.ulima.models.Imagen
+import pe.edu.ulima.models.beans.Imagen
 
 class ImagenService {
     companion object {
