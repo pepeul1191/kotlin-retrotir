@@ -26,7 +26,7 @@ class SeguidorViewModel: ViewModel() {
     )
     val usuarios get() = _usuarios.value
     fun setUsuarios(userId: Int) {
-        _usuario.value = UserService.fetchOne(userId).usuario
+        //_usuario.value = UserService.fetchOne(userId).usuario
         _usuarios.value = SeguidorService.fetchSeguidores(userId)
     }
 }

@@ -81,8 +81,8 @@ class SeguidorService {
             val list: List<Seguidor> = SeguidorService.fetchAll()
             for(seguidor in list){
                 if(seguidor.usuarioId == userId){
-                    val seguidor: Usuario = UserService.fetchOne(seguidor.seguidorId)
-                    respuesta.add(seguidor)
+                    //val seguidor: Usuario = UserService.fetchOne(seguidor.seguidorId)
+                    //respuesta.add(seguidor)
                 }
             }
             return respuesta

@@ -4,11 +4,17 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Handler
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import pe.edu.ulima.activities.AppActivity
+import pe.edu.ulima.configs.BackendClient
+import pe.edu.ulima.models.requests.UserFetchOne
+import pe.edu.ulima.models.requests.UserValidate
+import pe.edu.ulima.services.PokemonService
 import pe.edu.ulima.services.UserService
+import kotlin.concurrent.thread
 
 class LoginViewModel: ViewModel() {
     private val _usuario = MutableLiveData<String>("")
@@ -30,19 +36,45 @@ class LoginViewModel: ViewModel() {
     }
 
     fun validar(context: Context){
-        val id: Int = UserService.validate(usuario.value!!, contrasenia.value!!)
-        if(id == 0){
-            updateMensaje("Error: Usuario y contraseña no válidos")
-        }else{
-            updateMensaje("Todo OK")
-            Handler().postDelayed({
-                updateMensaje("")
-                val appActivity =  Intent(context, AppActivity::class.java)
-                appActivity.putExtra("user_id", id)
-                context.startActivity(
-                    appActivity
-                )
-            }, 1000)
+        val apiService = BackendClient.buildService(UserService::class.java)
+        val handler = Handler()
+        thread{
+            try {
+                var body = UserValidate(usuario.value!!, contrasenia.value!!)
+                val response = apiService.validate(body).execute()
+                if (response.isSuccessful) {
+                    val id: Int = response.body()!!
+                    if(id == 0){
+                        updateMensaje("Error: Usuario y contraseña no válidos")
+                    }else{
+                        updateMensaje("Todo OK")
+                        handler.postDelayed({
+                            updateMensaje("")
+                            val appActivity =  Intent(context, AppActivity::class.java)
+                            appActivity.putExtra("user_id", id)
+                            context.startActivity(
+                                appActivity
+                            )
+                        }, 1000)
+                    }
+                }else if(response.code() == 500){
+                    updateMensaje("Error: " + response.errorBody()?.string()!!)
+                }
+            }
+            catch (e: Exception) {
+                println("1 +++++++++++++++++++++++++++++")
+                e.printStackTrace()
+                println("2 +++++++++++++++++++++++++++++")
+                val activity = context as Activity
+                activity.runOnUiThread{
+                    Toast.makeText(
+                        activity,
+                        "Error HTTP: No se pudo validar el usuario",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+            // _pokemons.value =
         }
     }
 }

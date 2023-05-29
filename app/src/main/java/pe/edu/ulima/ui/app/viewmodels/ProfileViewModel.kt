@@ -43,10 +43,11 @@ class ProfileViewModel: ViewModel() {
     }
 
     fun setUsuario(id: Int){
+        /*
         val usuario = UserService.fetchOne(id)
         this.updateUsuario(usuario.usuario)
         this.updateCorreo(usuario.correo)
         this.updateNombre(usuario.nombre)
-        this.updateImagen(usuario.imagen)
+        this.updateImagen(usuario.imagen)*/
     }
 }
